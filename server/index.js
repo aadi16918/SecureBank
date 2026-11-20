@@ -321,6 +321,19 @@ app.post("/api/logout", (req, res, next) => {
   });
 });
 
+// SERVE REACT FRONTEND
+const frontendPath = path.join(__dirname, "../dist");
+
+app.use(express.static(frontendPath));
+
+app.use((req, res, next) => {
+  if (req.method !== "GET" || req.path.startsWith("/api/")) {
+    return next();
+  }
+
+  res.sendFile(path.join(frontendPath, "index.html"));
+});
+
 // ERROR HANDLER
 app.use((error, req, res, next) => {
   console.error("Server error:", error);
