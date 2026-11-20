@@ -7,7 +7,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const app = express();
-const PORT = 5000;
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const db = new Database(path.join(__dirname, "securebank.db"));
