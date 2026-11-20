@@ -332,7 +332,8 @@ app.use((error, req, res, next) => {
   });
 });
 
-app.listen(PORT, "127.0.0.1", () => {
-  console.log(`SecureBank API running at http://127.0.0.1:${PORT}`);
-});
+const PORT = process.env.PORT || 5000;
 
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`SecureBank API running on port ${PORT}`);
+});
